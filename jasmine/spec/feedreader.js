@@ -27,7 +27,7 @@ $(() => {
         });
 
 
-        // test to make sure each feed has an url
+        // each feedshould have an url
         it('have urls', () => {
             allFeeds.forEach(feed => {
                 expect(feed.url).toBeDefined();
@@ -36,7 +36,7 @@ $(() => {
         });
 
 
-        // test to make sure each feed has a name
+        // each feed should have a name
         it('have names', () => {
             allFeeds.forEach(feed => {
                 expect(feed.name).toBeDefined();
@@ -46,17 +46,19 @@ $(() => {
 
     });
 
-    // test suite about the menu
+    // test suite about the hamburger menu
     describe('The menu', () => {
 
-         //the class 'menu-hidden' on the body element is keeping to menu hidden
+         //the class 'menu-hidden' on the body element is what's keeping to menu hidden
         it('menu hidden by default', () => {
            expect($('body').hasClass('menu-hidden')).toBe(true);
         });
 
         it('menu to change visibily on click', () => {
+            //click one : menu is shown 
             $('.menu-icon-link').click();
             expect($('body').hasClass('menu-hidden')).toBe(false);
+            //click two : menu is hidden again
             $('.menu-icon-link').click();
             expect($('body').hasClass('menu-hidden')).toBe(true);
         });
@@ -68,6 +70,7 @@ $(() => {
     describe('New Feed Selection', () => {
 
         it('see changes in the feeds', (done) => {
+            // compare the title before leoadFeed() and after
             var title = $('.header-title').text();
             loadFeed(0, () => {
                 expect($('.header-title').text()).not.toBe(title);
@@ -80,11 +83,13 @@ $(() => {
      // test suite about new feed entries
     describe('Initial Entries', () => {
 
+        // test run when loadFeed() is done
         beforeEach((done) => {
             loadFeed(0, done);
         });
     
         it('at least one entry', () => {
+            //the container .feed should have children
             const entries = $('.feed').children();
             expect(entries.length).not.toBe(0);
         });
