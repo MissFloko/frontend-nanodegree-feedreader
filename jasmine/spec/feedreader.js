@@ -63,7 +63,7 @@ $(() => {
             expect($('body').hasClass('menu-hidden')).toBe(true);
         });
 
-    })
+    });
     
 
     // test suite about new feed selection
@@ -77,7 +77,7 @@ $(() => {
                 done();
             });
         });
-    })
+    });
 
 
      // test suite about new feed entries
@@ -93,6 +93,6 @@ $(() => {
             const entries = $('.feed').children();
             expect(entries.length).not.toBe(0);
         });
-    })
+    });
 
 })();
