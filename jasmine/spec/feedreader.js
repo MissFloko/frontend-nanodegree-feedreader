@@ -80,7 +80,7 @@ $(function () {
                     done();
                 });
             });
-        })
+        });
 
         it('see changes in the feeds', () => {
             // compare the two feeds
