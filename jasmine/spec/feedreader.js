@@ -69,13 +69,22 @@ $(function () {
     // test suite about new feed selection
     describe('New Feed Selection', () => {
 
-        it('see changes in the feeds', (done) => {
-            // compare the title before leoadFeed() and after
-            var title = $('.header-title').text();
+        let feed1;
+        let feed2;
+        // load two differents feeds
+        beforeEach((done) => {
             loadFeed(0, () => {
-                expect($('.header-title').text()).not.toBe(title);
-                done();
+                feed1 = $('.feed').html();
+                loadFeed(1, () => {
+                    feed2 = $('.feed').html();
+                    done();
+                });
             });
+        })
+
+        it('see changes in the feeds', () => {
+            // compare the two feeds
+            expect(feed1).not.toBe(feed2);
         });
     });
 
